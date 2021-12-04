@@ -1,0 +1,69 @@
+1. Stworzenie drzewa katalogow
+
+MacBook-Air-Adrianna:Documents adrianna$ cd ukos/
+MacBook-Air-Adrianna:ukos adrianna$ mkdir -p ala/i/as ala/ma/kota kot/ma/ale
+MacBook-Air-Adrianna:ukos adrianna$ tree ala
+ala
+├── i
+│   └── as
+└── ma
+    └── kota
+
+MacBook-Air-Adrianna:ukos adrianna$ cd ala/ma/kota
+MacBook-Air-Adrianna:kota adrianna$ pwd
+/Users/adrianna/Documents/ukos/ala/ma/kota
+
+A) scieżka względna
+
+MacBook-Air-Adrianna:kota adrianna$ cd ../..
+MacBook-Air-Adrianna:ala adrianna$ pwd
+/Users/adrianna/Documents/ukos/ala
+
+B) ścieżka bezwzględna 
+
+MacBook-Air-Adrianna:kota adrianna$ cd /Users/adrianna/Documents/ukos/ala
+MacBook-Air-Adrianna:ala adrianna$ pwd
+/Users/adrianna/Documents/ukos/ala
+MacBook-Air-Adrianna:ala adrianna$ 
+
+2. Jak utworzyć drzewo katalogów jan/kowalski w katalogu ala będąc w kota?
+
+MacBook-Air-Adrianna:kota adrianna$ mkdir -p ../../jan/kowalski
+MacBook-Air-Adrianna:kota adrianna$ cd ../..
+MacBook-Air-Adrianna:ala adrianna$ ls
+i	jan	ma
+MacBook-Air-Adrianna:ala adrianna$ cd jan/
+MacBook-Air-Adrianna:jan adrianna$ ls
+kowalski
+MacBook-Air-Adrianna:jan adrianna$ 
+
+3. Jak przenieść katalog ale do katalogu i?
+
+MacBook-Air-Adrianna:kota adrianna$ mv ~/Documents/ukos/kot/ma/ale ~/Documents/ukos/ala/i
+
+4. Jak zamknąć program, ktory nie odpowiada i nie reaguje na ctr+c?
+Komenda kill [pid] (wysłanie sygnału) lub też killall nazwa
+
+5. Jak wypisać wszystkie pliki w bieżącym katalogu, których nazwa zaczyna się od al?
+ls | grep ^al
+
+6. Nadawanie uprawnień do katalogu
+- żeby każdy mógł do niego wejść - chmod 751
+- żeby tylko grupa mogła wyświetlać co w nim jest - chmod o=x,u=rwx,g=rx
+- właściciel ma pełne uprawnienia u+rwx,g+rx,g-w,g=rx
+
+7. Jak utworzyć plik z listą plików w bieżącym katalogu?
+ls -p | grep -v / > list_of_files.txt
+
+8. Co mogło się stać?
+- nie mam uprawnień, ktoś mógł mi odebrać write?
+
+9. Jak przyspieszyć wpisywanie komend w terminalu? 
+Tab
+
+10. Jak uruchomić program, aby nie blokował on terminala? 
+1) Uruchomić program w tle: bg %numer
+2) Uruchomić polecenie w tle: program &
+
+
+
