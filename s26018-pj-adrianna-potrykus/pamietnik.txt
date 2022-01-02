@@ -16,3 +16,11 @@ Na dzisiajszych zajeciach dowiedzialam sie duzo o samych procesach:	- jak urucha
 20-11-2021
 Drogi pamiętniku,
 Na dzisiejszych zajęciach powtórzyłam sobie wszystko czego do tej pory się nauczyłam, na bieżąco rozwiązywałam zadania przygotowujące opierające się min na komendach: mkdir, ls, chmod, grep, bg. Powtórzyłam sobie również jak zapisuje się ścieżkę względną i bezwzględną oraz jak wykorzystuje się skróty klawiszowe. 
+
+4-12-2021
+Drogi pamietniku,
+Na dzisiejszych zajeciach odbyło się zaliczenie z przedmiotu ukos. Kolokwium odbyło się na platformie Kahoot, więc trzeba było odpowiadac szybko. Pytania były bardzo sklaniajace do myślenia, więc trzeba było się bardzo skupić. Przedmiot udało mi się zaliczyć w pierwszym terminie z ocena 4. 
+
+18-12-2021
+Drogi pamiętniku,
+Na dzisiejszych zajęciach uczylismy się czym jest powershell, jak go uruchomić i wykonywaliśmy zadania. Przećwiczyłam podstawowe komendy, takie jak: Get-Help, Bypass oraz dowiedziałam sie jak uruchomić powershella bez uprawnień administratora. Podczas dzisiejszych zajęć odbyła się również poprawa kolokwium. 
