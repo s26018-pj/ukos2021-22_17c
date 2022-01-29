@@ -28,3 +28,10 @@ Na dzisiejszych zajęciach uczylismy się czym jest powershell, jak go uruchomi�
 15-01-2022
 Drogi pamiętniku, 
 Na dzisiejszy zajęciach z przedmiotu UKOS dowiedziałam się jak w zaawansowany sposób korzystać z gita i githuba (m.in. merge lokalny/przez githuba, revert, przywrócenie zmiany, która już była wcześniej, dodawanie selektywne)
+
+29-01-2022
+Drogi pamiętniku,
+Na ostatnich zajęciach z przedmiotu UKOS podsumowaliśmy czym jest PowerShell  i na co nam pozwala.
+Zostały poruszone m.in. takie zagadnienia jak:
+- $_ daje dostęp do aktualnie przetwarzanego objektu, napisanie skryptu, pliki z tabelą, generowanie tekstu
+Prowadzący również odpowiedział na każde zadane pytanie dotyczące zajęć i podsumował poznane do tego czasu zagadnienia. 

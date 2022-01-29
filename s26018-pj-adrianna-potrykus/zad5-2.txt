@@ -1,0 +1,91 @@
+Dyski
+
+Korzystając z komendy Get-PSDrive możemy wylistować sobie dyski PowerShella.
+
+PS C:\Users\adudek> Get-PSDrive
+
+Name           Used (GB)     Free (GB) Provider      Root                                          CurrentLocation
+----           ---------     --------- --------      ----                                          ---------------
+Alias                                  Alias
+C                 759.84        171.57 FileSystem    C:\                                              Users\adudek
+Cert                                   Certificate   \
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+- Dyski z pojedynczą literą to zwykłe dyski w Windowsie.
+- KHML i HKCU to dyski z dostępem do rejestru.
+- Alias - zawiera listę wszystkich aliasów w bierzącej sesji
+- Cert - magazyn certyfikatów TLS/SSL, służące głównie do szyfrowania
+połączeń sieciowych, ale też e-maili czy podpisywania danych.
+- Env - zmienne środowiskowe
+- Function - funkcje zdefiniowane w bierzącej sesji
+- Variable - zmienne utworzone i dostępne w bierzącej sesji (NIE środowiskowe)
+- WSMan - dostęp do systemu WMI (To co robiliśmy przez Get-WmiObject)
+
+Dyski dodatkowe, które można sobie dograć poprzez załadowanie specjalnych
+modułów:
+- GH - GitHub - możemy chodzić po githubie w PowerShellu
+- AD - ActiveDirectory - dodaje dysk z dostępem do ActiveDirectory
+
+
+
+Notyfikacje
+
+Aby z tego skorzystać trzeba załadować odpowiednią bibliotekę.
+
+PS C:\Users\adudek> [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+>>
+>> $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+>>
+>> $myNotification = New-Object System.Windows.Forms.NotifyIcon
+>> $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+>> $myNotification.BalloonTipIcon = 'Error'
+>> $myNotification.BalloonTipText = "Your cat has meowed!"
+>> $myNotification.BalloonTipTitle = "Cat Error"
+>> $myNotification.Visible = $True
+>> $myNotification.ShowBalloonTip(10000)
+>>
+
+
+Aby nie przepisywać tego samego za każdym razem, gdy chcemy podać
+inne wartości możemy utworzyć sobie funkcję. Poniższy kod możemy
+bez obaw wrzucić do PowerShella, bo funkcję trzeba jeszcze wywołać.
+
+PS C:\Users\adudek> function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+
+Możemy ją wywołać w następujący sposób:
+PS C:\Users\adudek> GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+
+Wywołanie funkcji wielokrotnie w pętli:
+PS C:\Users\adudek> For($i = 1; $i -le 10; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+}
+
+Możemy też wyświetlić komunikat w wielu wierszach (max 4):
+PS C:\Users\adudek> GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
